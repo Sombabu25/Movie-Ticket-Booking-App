@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Movie Details</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="logo">🎬 MovieBook</div>
+    <ul class="nav-links">
+      <li><a href="/home">Home</a></li>
+      <li><a href="#">About</a></li>
+      <li><a href="#">Contact</a></li>
+      <li><a href="#">Login</a></li>
+      <li><a href="#">Signup</a></li>
+    </ul>
+    <form class="search-bar">
+      <input type="text" id="searchInput" placeholder="Search movies...">
+      <button type="submit" id="searchBtn">Search</button>
+    </form>
+  </nav>
+
+  <!-- Movie Detail Section -->
+  <section class="movie-detail-section">
+    <div class="movie-poster">
+      <img id="moviePoster" src="" alt="Movie Poster">
+      <div class="in-cinemas">In cinemas</div>
+    </div>
+
+    <div class="movie-detail-content">
+      <h1 id="movieTitle">Loading...</h1>
+      <div class="rating-box">
+        <span class="star">⭐</span>
+        <span id="movieRating">-</span>/10 
+        (<span id="movieVotes">-</span> Votes)
+        <button class="rate-btn">Rate now</button>
+      </div>
+
+      <div class="movie-tags" id="movieTags">-</div>
+
+      <div class="movie-info-line">
+        <span id="movieDuration">-</span> • 
+        <span id="movieGenre">-</span> • 
+        <span id="movieCert">-</span> • 
+        <span id="movieDate">-</span>
+      </div>
+      <p><strong>Price:</strong> <span id="movie-price">-</span></p>
+
+      <a href="/book" onclick="saveMovieName()">
+        <button class="book-btn">Book tickets</button>
+      </a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>© 2025 MovieBook</footer>
+
+  <!-- Script -->
+  <script>
+    const movieData = JSON.parse(localStorage.getItem("selectedMovie"));
+
+    function saveMovieName() {
+      const title = document.getElementById("movieTitle").textContent;
+      localStorage.setItem("bookMovieTitle", title);
+    }
+
+    if (movieData) {
+      document.getElementById("moviePoster").src = movieData.image;
+      document.getElementById("moviePoster").alt = `Poster of ${movieData.title}`;
+      document.getElementById("movieTitle").textContent = movieData.title;
+      document.getElementById("movieRating").textContent = movieData.rating;
+      document.getElementById("movieVotes").textContent = movieData.votes;
+      document.getElementById("movieTags").textContent = Array.isArray(movieData.tags) ? movieData.tags.join(', ') : movieData.tags;
+      document.getElementById("movieDuration").textContent = movieData.duration;
+      document.getElementById("movieGenre").textContent = movieData.genre;
+      document.getElementById("movieCert").textContent = movieData.cert;
+      document.getElementById("movieDate").textContent = movieData.date;
+      document.getElementById("movie-price").textContent = movieData.price;
+    } else {
+      document.querySelector(".movie-detail-content").innerHTML = `
+        <h2>No movie selected!</h2>
+        <p>Please go back to the <a href="/home">home page</a> and select a movie.</p>
+      `;
+    }
+
+    // Optional search bar filter
+    const searchInput = document.getElementById("searchInput");
+    const searchBtn = document.getElementById("searchBtn");
+
+    function handleSearch(event) {
+      event.preventDefault();
+      const query = searchInput.value.trim();
+      if (query) {
+        alert("Search functionality coming soon!");
+      }
+    }
+
+    searchBtn.addEventListener("click", handleSearch);
+  </script>
+
+</body>
+</html>

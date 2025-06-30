@@ -1,0 +1,374 @@
+<!-- public/home.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Movie Booking App</title>
+  <link rel="stylesheet" href="style.css">
+<script src="movie.js"></script>
+  
+</head>
+<body>
+
+
+  <nav class="navbar">
+    <div class="logo">🎬 MovieBooking</div>
+    <ul class="nav-links">
+
+      <li><a href="#">Home</a></li>
+      <li><a href="#">About</a></li>
+      <li><a href="#">Contact</a></li>
+      <li><a href="#">Login</a></li>
+      <li><a href="#">Signup</a></li>
+    </ul>
+    <form class="search-bar">
+      <input type="text" id="searchInput" placeholder="Search movies...">
+      <button type="submit" id="searchBtn">Search</button>
+    </form>
+    
+  </nav>
+
+
+<header>
+  <h1>Movie Booking App</h1>
+ 
+</header>
+
+
+  <main>
+    <section aria-labelledby="recommended-heading">
+      <h2 id="recommended-heading">Recommended Movies</h2>
+      <div class="movie-list">
+        
+        <article class="movie-card">
+          <img src="images/avengers.jpg" alt="Poster of Avengers movie" id="avengers"/>
+          <div class="details">
+            <h3>Avengers</h3>
+            <p>Action/Thrill</p>
+            
+            <p class="rating">⭐ 7.5/10 • 25K Votes</p>
+          </div>
+        </article>
+
+        <article class="movie-card">
+          <img src="images/bahubali.jpeg" alt="Poster of Bahubali movie" id="bahubali" />
+          <div class="details">
+            <h3>Bahubali</h3>
+            <p>Action/Drama</p>
+            
+            <p class="rating">⭐ 9.5/10 • 25.1K Votes</p>
+          </div>
+        </article>
+
+        <article class="movie-card">
+          <img src="images/salaar.jpeg" alt="Poster of Salaar movie" id="salaar" />
+          <div class="details">
+            <h3>Salaar</h3>
+            <p>Action/Comedy</p>
+          
+            <p class="rating">⭐ 7.4/10 • 17.7K Votes</p>
+          </div>
+        </article>
+
+        <article class="movie-card">
+          <img src="images/kgf.jpg" alt="Poster of KGF movie"  id="kgf" />
+          <div class="details">
+            <h3>KGF</h3>
+            <p>Suspense/Thrill</p>
+
+            <p class="rating">⭐ 8.5/10 • 20.15K Votes</p>
+          </div>
+        </article>
+
+        <article class="movie-card">
+          <img src="images/batman.jpg" alt="Poster of Batman movie" id="batman"/>
+          <div class="details">
+            <h3>Batman</h3>
+            <p>Action/Comedy</p>
+           
+            <p class="rating">⭐ 7.9/10 • 16.7K Votes</p>
+          </div>
+        </article>
+
+        <article class="movie-card">
+          <img src="images/dunki.jpeg" alt="Poster of Dunki movie" id="dunki"/>
+          <div class="details">
+            <h3>Dunki</h3>
+            <p>Action/Comedy</p>
+        
+            <p class="rating">⭐ 7.7/10 • 17.00K Votes</p>
+          </div>
+        </article>
+
+        <article class="movie-card">
+          <img src="images/anaconda.jpg" alt="Poster of Anaconda movie" id="anaconda"/>
+          <div class="details">
+            <h3>Anaconda</h3>
+            <p>Action/Comedy</p>
+          
+            <p class="rating">⭐ 8.4/10 • 19.7K Votes</p>
+          </div>
+        </article>
+
+        <article class="movie-card">
+          <img src="images/krish.jpg" alt="Poster of Krish 3 movie" id="krish" />
+          <div class="details">
+            <h3>Krish 3</h3>
+            <p>Action/Comedy</p>
+           
+            <p class="rating">⭐ 6.4/10 • 16.8K Votes</p>
+          </div>
+        </article>
+
+        <article class="movie-card">
+          <img src="images/lion-king.jpg" alt="Poster of Lion King movie" id="lion-king" />
+          <div class="details">
+            <h3>Lion King</h3>
+            <p>Action/Comedy</p>
+            <p class="rating">⭐ 7.8/10 • 15.8K Votes</p>
+          </div>
+        </article>
+
+        <article class="movie-card">
+          <img src="images/godzilla.webp" alt="Poster of Godzilla movie" id="godzilla"/>
+          <div class="details">
+            <h3>Godzilla</h3>
+           
+            <p>Action/Comedy</p>
+            <p class="rating">⭐ 6.8/10 • 12.9K Votes</p>
+          </div>
+        </article>
+
+        <article class="movie-card">
+          <img src="images/superman.jpg" alt="Poster of Superman movie" id="superman"/>
+          <div class="details">
+            <h3>SuperMan</h3>
+            <p>Action/Comedy</p>
+            <p class="rating">⭐ 6.8/10 • 21.22K Votes</p>
+          </div>
+        </article>
+
+        <article class="movie-card">
+          <img src="images/spidey.webp" alt="Poster of Spider Man movie" id="Spider" />
+          <div class="details">
+            <h3>Spider Man</h3>
+            <p>Action/Comic</p>
+            <p class="rating">⭐ 7.7/10 • 19.7K Votes</p>
+          </div>
+        </article>
+
+
+        <article class="movie-card">
+          <img src="images/iron-man.jpg" alt="Poster of iron-man movie" id="iron-man" />
+          <div class="details">
+            <h3>Iron Man</h3>
+            <p>Action/Comedy</p>
+            <p class="rating">⭐ 5.36/10 • 48.5K Votes</p>
+          </div>
+        </article>
+
+        <article class="movie-card">
+          <img src="images/jungle-book.jpg" alt="Poster of jungle-book movie" id="jungle-book"/>
+          <div class="details">
+            <h3>Jungle Book</h3>
+            <p>Action/Comedy</p>
+            <p class="rating">⭐ 8.3/10 • 15.63K Votes</p>
+          </div>
+        </article>
+
+
+        <article class="movie-card">
+          <img src="images/jurasic.jpg" alt="Poster of jurasic movie" id="jurasic"/>
+          <div class="details">
+            <h3>Jurasic Park</h3>
+            <p>Action/Comedy</p>
+      
+            <p class="rating">⭐ 7.5/10 • 12.56K Votes</p>
+          </div>
+        </article>
+
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Movie Booking App. All rights reserved.</p>
+  </footer>
+
+<!-- 
+  <script>
+    // Card click handler
+
+  
+    const movieDurations = {
+  avengers: "2h 23m",
+  bahubali: "4h 10m",
+  salaar: "2h 30m",
+  kgf: "3h 12m",
+  batman: "2h 56m",
+  dunki: "2h 10m",
+  anaconda: "1h 49m",
+  krish: "2h 35m",
+  "lion-king": "1h 58m",
+  godzilla: "3h 10m",
+  superman: "1h 33m",
+  Spider: "2h 15m",
+  "iron-man": "3h 6m",
+  "jungle-book": "1h 46m",
+  jurasic: "2h 7m"
+};
+
+
+const moviePrices = {
+  avengers: "₹200",
+  bahubali: "₹180",
+  salaar: "₹150",
+  kgf: "₹160",
+  batman: "₹190",
+  dunki: "₹140",
+  anaconda: "₹130",
+  krish: "₹150",
+  "lion-king": "₹170",
+  godzilla: "₹160",
+  superman: "₹140",
+  Spider: "₹180",
+  "iron-man": "₹200",
+  "jungle-book": "₹150",
+  jurasic: "₹170"
+};
+
+
+
+
+const id = card.querySelector("img").id;
+
+const movieData = {
+  image: card.querySelector('img').getAttribute('src'),
+  title: card.querySelector('h3').textContent,
+  rating: card.querySelector('.rating').textContent.split('/')[0].replace('⭐', '').trim(),
+  votes: card.querySelector('.rating').textContent.split('•')[1].trim(),
+  tags: "2D, IMAX, Hindi", // default placeholder
+  duration: movieDurations[id] || "2h 0m",
+  genre: "Action, Drama, Historical",
+  cert: "UA16+",
+  date: "14 Feb, 2025",
+  price: moviePrices[id] || "₹150"
+};
+
+
+// const id = card.querySelector("img").id;
+
+// const movieData = {
+//   // ... existing fields
+//   price: moviePrices[id] || "₹150"
+// };
+
+
+
+//     document.querySelectorAll('.movie-card').forEach(card => {
+//       card.addEventListener('click', () => {
+//         const movieData = {
+//           image: card.querySelector('img').getAttribute('src'),
+//           title: card.querySelector('h3').textContent,
+//           rating: card.querySelector('.rating').textContent.split('/')[0].replace('⭐', '').trim(),
+//           votes: card.querySelector('.rating').textContent.split('•')[1].trim(),
+//           tags: "2D, IMAX, Hindi", // default placeholder
+//           duration: movieDurations[card.querySelector("img").id] || "2h 0m",
+//           genre: "Action, Drama, Historical",
+//           cert: "UA16+",
+//           date: "14 Feb, 2025"
+//         };
+
+//         localStorage.setItem("selectedMovie", JSON.stringify(movieData));
+//         window.location.href = "/movie";
+//       });
+//     });
+
+    // Search handler
+    const searchInput = document.getElementById("searchInput");
+    const searchBtn = document.getElementById("searchBtn");
+    const movieCards = document.querySelectorAll(".movie-card");
+
+    function filterMovies() {
+      const query = searchInput.value.toLowerCase();
+      movieCards.forEach(card => {
+        const title = card.querySelector("h3").textContent.toLowerCase();
+        card.style.display = title.includes(query) ? "block" : "none";
+      });
+    }
+
+    searchBtn.addEventListener("click", (e) => {
+      e.preventDefault();
+      filterMovies();
+    });
+
+    searchInput.addEventListener("input", filterMovies);
+  </script> -->
+
+
+  <script>
+    const movieDurations = {
+      avengers: "2h 23m", bahubali: "4h 10m", salaar: "2h 30m", kgf: "3h 12m",
+      batman: "2h 56m", dunki: "2h 10m", anaconda: "1h 49m", krish: "2h 35m",
+      "lion-king": "1h 58m", godzilla: "3h 10m", superman: "1h 33m", Spider: "2h 15m",
+      "iron-man": "3h 6m", "jungle-book": "1h 46m", jurasic: "2h 7m"
+    };
+  
+    const moviePrices = {
+      avengers: "₹200", bahubali: "₹180", salaar: "₹150", kgf: "₹160",
+      batman: "₹190", dunki: "₹140", anaconda: "₹130", krish: "₹150",
+      "lion-king": "₹170", godzilla: "₹160", superman: "₹140", Spider: "₹180",
+      "iron-man": "₹200", "jungle-book": "₹150", jurasic: "₹170"
+    };
+  
+    document.querySelectorAll('.movie-card').forEach(card => {
+      card.addEventListener('click', () => {
+        const id = card.querySelector("img").id;
+  
+        const movieData = {
+          image: card.querySelector('img').getAttribute('src'),
+          title: card.querySelector('h3').textContent,
+          rating: card.querySelector('.rating').textContent.split('/')[0].replace('⭐', '').trim(),
+          votes: card.querySelector('.rating').textContent.split('•')[1].trim(),
+          tags: "2D, IMAX, Hindi", 
+          duration: movieDurations[id] || "2h 0m",
+          genre: "Action, Drama, Historical",
+          cert: "UA16+",
+          date: "14 Feb, 2025",
+          price: moviePrices[id] || "₹150"
+        };
+  
+        localStorage.setItem("selectedMovie", JSON.stringify(movieData));
+        window.location.href = "/movie";
+      });
+    });
+  
+    // Search bar logic
+    const searchInput = document.getElementById("searchInput");
+    const searchBtn = document.getElementById("searchBtn");
+    const movieCards = document.querySelectorAll(".movie-card");
+  
+    function filterMovies() {
+      const query = searchInput.value.toLowerCase();
+      movieCards.forEach(card => {
+        const title = card.querySelector("h3").textContent.toLowerCase();
+        card.style.display = title.includes(query) ? "block" : "none";
+      });
+    }
+  
+    searchBtn.addEventListener("click", (e) => {
+      e.preventDefault();
+      filterMovies();
+    });
+    
+  
+    searchInput.addEventListener("input", filterMovies);
+  </script>
+  
+
+  
+
+  
+</body>
+</html>

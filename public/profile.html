@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Your Profile</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #121212;
+      color: white;
+      margin: 0;
+      padding: 0;
+    }
+
+    h2 {
+      color: #f84464;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 50px auto;
+      padding: 20px;
+      background-color: #1a1a1a;
+      border-radius: 10px;
+    }
+
+    .booking-history {
+      background-color: #111;
+      padding: 30px;
+      border-radius: 10px;
+    }
+
+    .booking-entry {
+      background-color: #2d2d2d;
+      padding: 20px;
+      margin-bottom: 20px;
+      border-radius: 8px;
+      border-left: 5px solid #f84464;
+      transition: all 0.3s ease;
+    }
+
+    .booking-entry:hover {
+      background-color: #3a3a3a;
+      box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3);
+    }
+
+    .booking-entry strong {
+      font-size: 1.4em;
+      color: #f84464;
+    }
+
+    .booking-entry span {
+      color: #aaa;
+    }
+
+    .booking-entry small {
+      display: block;
+      margin-top: 10px;
+      color: #ccc;
+    }
+
+    .empty {
+      text-align: center;
+      color: #aaa;
+      font-size: 1.2em;
+    }
+
+    .home-btn,
+    .signout-btn {
+      display: inline-block;
+      margin-left: 10px;
+      padding: 12px 25px;
+      font-weight: bold;
+      border-radius: 5px;
+      text-decoration: none;
+      border: 2px solid yellow; /* temporary debug */
+    }
+
+    .signout-btn {
+      background-color: #f84464;
+      color: white;
+    }
+
+    .signout-btn:hover {
+      background-color: #d83254;
+    }
+
+    .home-btn {
+      background-color: #ff4081;
+      color: white;
+    }
+
+    .home-btn:hover {
+      background-color: #e91e63;
+    }
+
+    @media (max-width: 768px) {
+      .container {
+        width: 90%;
+      }
+
+      .booking-entry {
+        padding: 15px;
+      }
+
+      .signout-btn,
+      .home-btn {
+        font-size: 14px;
+        padding: 10px 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Fixed top-right nav buttons -->
+  <div style="position: fixed; top: 20px; right: 20px; z-index: 9999;">
+    <a href="/" class="home-btn">Go to Home</a>
+    <a href="/logout" class="signout-btn">Sign Out</a>
+  </div>
+
+  <!-- Booking History Container -->
+  <div class="container">
+    <div class="booking-history">
+      <h2>Your Booking History</h2>
+      <div id="history">
+        <!-- Populated by JS -->
+      </div>
+    </div>
+  </div>
+
+  <script>
+  window.addEventListener('DOMContentLoaded', async () => {
+    const response = await fetch('/api/bookings', {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    });
+
+    const historyDiv = document.getElementById("history");
+
+    if (response.status !== 200) {
+      historyDiv.innerHTML = `<p class="empty">No booking history yet.</p>`;
+      return;
+    }
+
+    const bookings = await response.json();
+
+    if (!bookings || bookings.length === 0) {
+      historyDiv.innerHTML = `<p class="empty">No booking history yet.</p>`;
+    } else {
+      historyDiv.innerHTML = bookings.map(b => `
+        <div class="booking-entry">
+          <strong>${b.movie}</strong> <br>
+          <span>Date: ${b.date} | Seats: ${b.seats}</span> <br>
+          <span>Booked by: ${b.name}</span> <br>
+          <strong>Total Price: ₹${b.totalPrice}</strong> <br>
+          <small>Duration: ${b.duration} | Booked on: ${new Date(b.createdAt).toLocaleString()}</small>
+        </div>
+      `).join("");
+    }
+  });
+</script>
+
+
+</body>
+</html>
