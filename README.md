@@ -31,7 +31,7 @@ movie-booking-app/
 │
 ├── public/          # Static HTML, CSS, JS
 ├── routes/          # Express route handlers
-├── views/           # If using EJS or templates
+├── views/           # for EJS or templates
 ├── app.js           # Main Express server file
 ├── package.json     # Project metadata and dependencies
 └── README.md
