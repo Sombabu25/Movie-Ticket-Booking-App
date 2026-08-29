@@ -1,0 +1,520 @@
+<!-- public/home.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Movie Booking App</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h2>Recommended Movies</h2>
+  <div class="movie-list">
+    <div class="movie-card">
+      <img src="avengers.jpg" alt="Mad Square" />
+      <div class="details">
+        <h3>Avengers</h3>
+        <p>Action/Thrill</p>
+        <p class="rating">⭐ 7.5/10 • 25K Votes</p>
+      </div>
+    </div>
+
+    <div class="movie-card">
+        <img src="bahubali.jpeg" alt="movie not available" />
+        <div class="details">
+          <h3>Bahubali</h3>
+          <p>Action/Drama</p>
+          <p class="rating">⭐ 9.5/10 • 25.1K Votes</p>
+        </div>
+      </div>
+
+
+      <div class="movie-card">
+        <img src="salaar.jpeg" alt="Mad Square" />
+        <div class="details">
+          <h3>Salaar</h3>
+          <p>Action/Comedy</p>
+          <p class="rating">⭐ 7.4/10 • 17.7K Votes</p>
+        </div>
+      </div>
+
+
+      <div class="movie-card">
+        <img src="kgf.jpg" alt="Mad Square" />
+        <div class="details">
+          <h3>KGF</h3>
+          <p>Suspense/Thrill</p>
+          <p class="rating">⭐ 8.5/10 • 20.15K Votes</p>
+        </div>
+      </div>
+
+      <div class="movie-card">
+        <img src="batman.jpg" alt="Mad Square" />
+        <div class="details">
+          <h3>Batman</h3>
+          <p>Action/Comedy</p>
+          <p class="rating">⭐ 7.9/10 • 16.7K Votes</p>
+        </div>
+      </div>
+
+<!-- -------------------------------------------------------------- -->
+      <div class="movie-card">
+        <img src="dunki.jpeg" alt="Mad Square" />
+        <div class="details">
+          <h3>Dunki</h3>
+          <p>Action/Comedy</p>
+          <p class="rating">⭐ 7.7/10 • 17.00K Votes</p>
+        </div>
+      </div>
+
+
+      <div class="movie-card">
+        <img src="anaconda.jpg" alt="Mad Square" />
+        <div class="details">
+          <h3>Anaconda</h3>
+          <p>Action/Comedy</p>
+          <p class="rating">⭐ 8.4/10 • 19.7K Votes</p>
+        </div>
+      </div>
+
+
+
+      <div class="movie-card">
+        <img src="krish.jpg" alt="Mad Square" />
+        <div class="details">
+          <h3>Krish 3</h3>
+          <p>Action/Comedy</p>
+          <p class="rating">⭐ 6.4/10 • 16.8K Votes</p>
+        </div>
+      </div>
+
+<!-- ----------------------------- -->
+
+      <div class="movie-card">
+        <img src="lion-king.jpg" alt="Mad Square" />
+        <div class="details">
+          <h3>Lion King</h3>
+          <p>Action/Comedy</p>
+          <p class="rating">⭐ 7.8/10 • 15.8K Votes</p>
+        </div>
+      </div>
+
+
+      <div class="movie-card">
+        <img src="godzilla.webp" alt="Mad Square" />
+        <div class="details">
+          <h3>Godzilla</h3>
+          <p>Action/Comedy</p>
+          <p class="rating">⭐ 6.8/10 • 12.9K Votes</p>
+        </div>
+      </div>
+
+
+      <div class="movie-card">
+        <img src="superman.jpg" alt="Mad Square" />
+        <div class="details">
+          <h3>SuperMan</h3>
+          <p>Action/Comedy</p>
+          <p class="rating">⭐ 6.8/10 • 21.22K Votes</p>
+        </div>
+      </div>
+
+
+
+      <div class="movie-card">
+        <img src="spidey.webp" alt="Mad Square" />
+        <div class="details">
+          <h3>Spider Man</h3>
+          <p>Action/Comic</p>
+          <p class="rating">⭐ 7.7/10 • 19.7K Votes</p>
+        </div>
+      </div>
+
+
+
+     
+
+    <!-- Duplicate movie-card for more movies -->
+  </div>
+</body>
+</html>
+---------------------------------
+
+
+body {
+    font-family: Arial, sans-serif;
+    padding: 20px;
+    background: #f9f9f9;
+  }
+  
+  h2 {
+    margin-bottom: 20px;
+  }
+  
+  .movie-list {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* 4 cards in one row */
+    gap: 20px;
+  }
+  
+  
+  .movie-card {
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 0 8px rgba(0,0,0,0.2);
+    width: 200px;
+    flex-shrink: 0;
+    overflow: hidden;
+  }
+  
+  .movie-card img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+  }
+  
+  .details {
+    padding: 10px;
+  }
+  
+  .rating {
+    font-size: 0.9em;
+    color: #b21f1f;
+  }
+  //-------------------------------------------------------------
+
+  //server.js
+  const express = require('express');
+const path = require('path');
+const mongoose = require('mongoose');
+
+const app = express();
+
+// MongoDB connection
+
+mongoose.connect('mongodb://127.0.0.1:27017/movieBooking')
+
+  .then(() => console.log('✅ Connected to MongoDB'))
+  .catch((err) => console.error('❌ MongoDB connection error:', err));
+
+
+
+// Booking schema & model
+const bookingSchema = new mongoose.Schema({
+  movie: String,
+  name: String,
+  seats: Number,
+  date: String,
+});
+
+const Booking = mongoose.model('Booking', bookingSchema);
+
+// Middleware
+app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.urlencoded({ extended: true }));
+
+// Routes
+app.get('/', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'home.html'));
+});
+
+app.get('/movie', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'movie.html'));
+});
+
+app.get('/book', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'book.html'));
+});
+
+// Handle booking submission
+app.post('/confirm-booking', async (req, res) => {
+  const { movie, name, seats, date } = req.body;
+
+  if (!movie || !name || !seats || !date) {
+    return res.status(400).send('All booking fields are required!');
+  }
+
+  try {
+    const newBooking = new Booking({ movie, name, seats, date });
+    await newBooking.save();
+    res.setHeader('Content-Type', 'text/html');
+    res.send(`<h2>Thank you, ${name}! Your booking for ${movie} on ${date} is confirmed.</h2>`);
+  } catch (err) {
+    console.error('Error saving booking:', err);
+    res.status(500).send('Something went wrong. Please try again.');
+  }
+});
+
+// Admin route to view all bookings
+app.get('/admin/bookings', async (req, res) => {
+  try {
+    const bookings = await Booking.find().sort({ date: 1 });
+    res.json(bookings); // Later you can show this in an HTML table
+  } catch (err) {
+    res.status(500).send('Error fetching bookings.');
+  }
+});
+
+// 404 handler
+app.use((req, res) => {
+  res.status(404).sendFile(path.join(__dirname, 'public', '404.html'));
+});
+
+// Start server
+const PORT = process.env.PORT || 2000;
+app.listen(PORT, () => {
+  console.log(`🚀 Server running on port ${PORT}`);
+});
+----------------------------------------------------------------
+const express = require('express');
+const path = require('path');
+const mongoose = require('mongoose');
+const app = express();
+
+// Connect to MongoDB
+mongoose.connect('mongodb://127.0.0.1:27017/movieBooking', {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+}).then(() => {
+  console.log('Connected to MongoDB');
+}).catch(err => {
+  console.error('❌ MongoDB connection error:', err);
+});
+
+// Define booking schema
+const bookingSchema = new mongoose.Schema({
+  movie: String,
+  name: String,
+  seats: Number,
+  date: String,
+  duration: String
+});
+
+const Booking = mongoose.model('Booking', bookingSchema);
+
+// Middleware
+app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.urlencoded({ extended: true }));
+
+// Routes
+app.get('/', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'home.html'));
+});
+
+app.get('/movie', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'movie.html'));
+});
+
+app.get('/book', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'book.html'));
+});
+
+// Handle booking confirmation
+app.post('/confirm-booking', async (req, res) => {
+  const { movie, name, seats, date, duration } = req.body;
+
+  try {
+    const newBooking = new Booking({ movie, name, seats, date, duration });
+    await newBooking.save();
+    console.log("🎟️ Booking saved:", newBooking);
+    res.send(`
+      <h2>Thank you, ${name}!</h2>
+      <p>Your booking for <strong>${movie}</strong> on <strong>${date}</strong> (${duration}) for <strong>${seats}</strong> seat(s) is confirmed.</p>
+      <a href="/">Go back to Home</a>
+    `);
+  } catch (err) {
+    console.error("❌ Error saving booking:", err);
+    res.status(500).send("Something went wrong. Please try again.");
+  }
+});
+
+// Optional: View all bookings (Admin route)
+app.get('/bookings', async (req, res) => {
+  try {
+    const bookings = await Booking.find();
+    res.send(`
+      <h2>All Bookings</h2>
+      <ul>
+        ${bookings.map(b => `
+          <li>
+            🎬 <strong>${b.movie}</strong> - ${b.name} - ${b.seats} seat(s) on ${b.date} (${b.duration})
+          </li>
+        `).join('')}
+      </ul>
+      <a href="/">Back to Home</a>
+    `);
+  } catch (err) {
+    console.error("❌ Failed to fetch bookings:", err);
+    res.status(500).send("Could not retrieve bookings.");
+  }
+});
+
+
+
+app.get('/profile', async (req, res) => {
+  // Get user ID from session or other auth mechanism
+  const userId = req.session.userId; // This is just a placeholder if you add session-based login
+
+  try {
+    const bookings = await Booking.find({ userId });
+    res.send(`
+      <h2>Your Booking History</h2>
+      <ul>
+        ${bookings.map(b => `
+          <li>
+            🎬 <strong>${b.movie}</strong> - ${b.name} - ${b.seats} seat(s) on ${b.date} (${b.duration})
+          </li>
+        `).join('')}
+      </ul>
+      <a href="/">Go back to Home</a>
+    `);
+  } catch (err) {
+    console.error("❌ Failed to fetch bookings:", err);
+    res.status(500).send("Could not retrieve your bookings.");
+  }
+});
+
+
+app.post('/confirm-booking', async (req, res) => {
+  const { movie, name, seats, date, duration } = req.body;
+
+  try {
+    const newBooking = new Booking({ movie, name, seats, date, duration });
+    await newBooking.save();
+    console.log("🎟️ Booking saved:", newBooking);
+
+    // Redirect to profile page after booking
+    res.redirect('/profile');
+  } catch (err) {
+    console.error("❌ Error saving booking:", err);
+    res.status(500).send("Something went wrong. Please try again.");
+  }
+});
+
+
+
+
+
+// 404 Page
+app.use((req, res) => {
+  res.status(404).sendFile(path.join(__dirname, 'public', '404.html'));
+});
+
+// Start server
+app.listen(5000, () => {
+  console.log('🚀 Server running on http://localhost:5000');
+});
+
+
+---------------------------------------------------------------------------
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Movie Details</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="logo">🎬 MovieBook</div>
+    <ul class="nav-links">
+      <li><a href="/home">Home</a></li>
+      <li><a href="#">About</a></li>
+      <li><a href="#">Contact</a></li>
+      <li><a href="#">Login</a></li>
+      <li><a href="#">Signup</a></li>
+    </ul>
+    <form class="search-bar">
+      <input type="text" id="searchInput" placeholder="Search movies...">
+      <button type="submit" id="searchBtn">Search</button>
+    </form>
+  </nav>
+
+  <!-- Movie Detail Section -->
+  <section class="movie-detail-section">
+    <div class="movie-poster">
+      <img id="moviePoster" src="" alt="Movie Poster">
+      <div class="in-cinemas">In cinemas</div>
+    </div>
+
+    <div class="movie-detail-content">
+      <h1 id="movieTitle">Loading...</h1>
+      <div class="rating-box">
+        <span class="star">⭐</span>
+        <span id="movieRating">-</span>/10 
+        (<span id="movieVotes">-</span> Votes)
+        <button class="rate-btn">Rate now</button>
+      </div>
+
+      <div class="movie-tags" id="movieTags">-</div>
+
+      <div class="movie-info-line">
+        <span id="movieDuration">-</span> • 
+        <span id="movieGenre">-</span> • 
+        <span id="movieCert">-</span> • 
+        <span id="movieDate">-</span>
+      </div>
+      <p><strong>Price:</strong> <span id="movie-price"></span></p>
+
+
+      <!-- <a href="/book"><button class="book-btn">Book tickets</button></a> -->
+      <a href="/book" onclick="saveMovieName()">
+        <button class="book-btn">Book tickets</button>
+      </a>
+
+
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>© 2025 MovieBook</footer>
+
+  <!-- Script -->
+  <script>
+    const movieData = JSON.parse(localStorage.getItem("selectedMovie"));
+    document.getElementById("movie-price").textContent = movie.price;
+
+    function saveMovieName() {
+    const title = document.getElementById("movieTitle").textContent;
+    localStorage.setItem("bookMovieTitle", title);
+  }
+
+    if (movieData) {
+      document.getElementById("moviePoster").src = movieData.image;
+      document.getElementById("moviePoster").alt = `Poster of ${movieData.title}`;
+      document.getElementById("movieTitle").textContent = movieData.title;
+      document.getElementById("movieRating").textContent = movieData.rating;
+      document.getElementById("movieVotes").textContent = movieData.votes;
+      document.getElementById("movieTags").textContent = movieData.tags;
+      document.getElementById("movieDuration").textContent = movieData.duration;
+      document.getElementById("movieGenre").textContent = movieData.genre;
+      document.getElementById("movieCert").textContent = movieData.cert;
+      document.getElementById("movieDate").textContent = movieData.date;
+    } else {
+      document.querySelector(".movie-detail-content").innerHTML = `
+        <h2>No movie selected!</h2>
+        <p>Please go back to the <a href="/home">home page</a> and select a movie.</p>
+      `;
+    }
+
+    // Optional search bar filter
+    const searchInput = document.getElementById("searchInput");
+    const searchBtn = document.getElementById("searchBtn");
+
+    function handleSearch(event) {
+      event.preventDefault();
+      const query = searchInput.value.trim();
+      if (query) {
+        alert("Search functionality coming soon!");
+      }
+    }
+
+    searchBtn.addEventListener("click", handleSearch);
+  </script>
+
+</body>
+</html>
