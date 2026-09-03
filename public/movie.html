@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
   <title>Movie Details</title>
   <link rel="stylesheet" href="style.css" />
+  <script src="movie.js"></script>
 </head>
 <body>
 
@@ -59,47 +60,12 @@
   <!-- Footer -->
   <footer>© 2025 MovieBook</footer>
 
-  <!-- Script -->
+  <!-- Script for saveMovieName function -->
   <script>
-    const movieData = JSON.parse(localStorage.getItem("selectedMovie"));
-
     function saveMovieName() {
       const title = document.getElementById("movieTitle").textContent;
       localStorage.setItem("bookMovieTitle", title);
     }
-
-    if (movieData) {
-      document.getElementById("moviePoster").src = movieData.image;
-      document.getElementById("moviePoster").alt = `Poster of ${movieData.title}`;
-      document.getElementById("movieTitle").textContent = movieData.title;
-      document.getElementById("movieRating").textContent = movieData.rating;
-      document.getElementById("movieVotes").textContent = movieData.votes;
-      document.getElementById("movieTags").textContent = Array.isArray(movieData.tags) ? movieData.tags.join(', ') : movieData.tags;
-      document.getElementById("movieDuration").textContent = movieData.duration;
-      document.getElementById("movieGenre").textContent = movieData.genre;
-      document.getElementById("movieCert").textContent = movieData.cert;
-      document.getElementById("movieDate").textContent = movieData.date;
-      document.getElementById("movie-price").textContent = movieData.price;
-    } else {
-      document.querySelector(".movie-detail-content").innerHTML = `
-        <h2>No movie selected!</h2>
-        <p>Please go back to the <a href="/home">home page</a> and select a movie.</p>
-      `;
-    }
-
-    // Optional search bar filter
-    const searchInput = document.getElementById("searchInput");
-    const searchBtn = document.getElementById("searchBtn");
-
-    function handleSearch(event) {
-      event.preventDefault();
-      const query = searchInput.value.trim();
-      if (query) {
-        alert("Search functionality coming soon!");
-      }
-    }
-
-    searchBtn.addEventListener("click", handleSearch);
   </script>
 
 </body>

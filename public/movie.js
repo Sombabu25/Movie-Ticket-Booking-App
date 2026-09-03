@@ -2,7 +2,8 @@ window.addEventListener("DOMContentLoaded", () => {
   const movie = JSON.parse(localStorage.getItem("selectedMovie"));
 
   if (!movie) {
-    alert("No movie selected.");
+    // Redirect to home page instead of showing alert
+    window.location.href = "/";
     return;
   }
 
@@ -15,6 +16,7 @@ window.addEventListener("DOMContentLoaded", () => {
   document.getElementById("movieGenre").textContent = movie.genre;
   document.getElementById("movieCert").textContent = movie.cert;
   document.getElementById("movieDate").textContent = movie.date;
+  document.getElementById("movie-price").textContent = movie.price;
 
   // ✅ Show profile icon only if user is logged in
   const isLoggedIn = localStorage.getItem("isLoggedIn") === "true";
