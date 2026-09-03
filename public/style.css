@@ -20,12 +20,15 @@
 /* === Base styles === */
 body {
   font-family: Arial, sans-serif;
-  padding: 20px;
   background: #121212;
   margin: 0;
   color: #fff;
   font-family: 'Segoe UI', sans-serif;
   -webkit-tap-highlight-color: transparent;
+}
+
+main {
+  padding: 20px;
 }
 
 h1, h2 {
@@ -254,6 +257,10 @@ footer {
   align-items: flex-start;
 }
 
+body:not(:has(main)) .movie-detail-section {
+  padding-top: 20px;
+}
+
 .movie-poster {
   position: relative;
   width: 300px;
@@ -373,11 +380,29 @@ footer {
   background-color: #ff2d55;
 }
 
+.container p {
+  text-align: center;
+  margin-top: 15px;
+  color: #ccc;
+}
+
+.container a {
+  color: #ffd700;
+  text-decoration: none;
+}
+
+.container a:hover {
+  text-decoration: underline;
+}
 
 /* === Mobile Responsiveness === */
 @media (max-width: 768px) {
-  body {
+  main {
     padding: 10px;
+  }
+  
+  body {
+    padding: 0;
   }
   
   .navbar {
