@@ -9,7 +9,7 @@
 
 @media (max-width: 768px) {
   .mobile-only {
-    display: block !important; /* or flex/inline-block as needed */
+    display: block !important;
   }
   .desktop-only {
     display: none !important;
@@ -25,6 +25,7 @@ body {
   margin: 0;
   color: #fff;
   font-family: 'Segoe UI', sans-serif;
+  -webkit-tap-highlight-color: transparent;
 }
 
 h1, h2 {
@@ -35,10 +36,11 @@ h1, h2 {
 /* Grid for movie cards */
 .movie-list {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 20px;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 16px;
   max-width: 1200px;
   margin: 0 auto;
+  padding: 0 10px;
 }
 
 /* Individual movie card */
@@ -57,9 +59,19 @@ h1, h2 {
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
 }
 
+@media (hover: none) {
+  .movie-card:hover {
+    transform: none;
+  }
+  
+  .movie-card:active {
+    transform: scale(0.98);
+  }
+}
+
 .movie-card img {
   width: 100%;
-  height: 250px;
+  height: 220px;
   object-fit: cover;
   transition: transform 0.4s ease;
 }
@@ -164,20 +176,24 @@ footer {
   align-items: center;
   flex-wrap: wrap;
   background-color: #0d1b2a;
-  padding: 15px 30px;
+  padding: 15px 20px;
   color: white;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
 }
 
 .logo {
-  font-size: 1.5em;
+  font-size: 1.3em;
   font-weight: bold;
 }
 
 .nav-links {
   list-style: none;
   display: flex;
-  gap: 20px;
+  gap: 15px;
   flex-wrap: wrap;
+  font-size: 0.9em;
 }
 
 .nav-links li a {
@@ -194,22 +210,28 @@ footer {
   display: flex;
   align-items: center;
   margin-top: 10px;
+  width: 100%;
+  order: 3;
 }
 
 .search-bar input {
-  padding: 6px 10px;
+  padding: 10px 12px;
   border: none;
   border-radius: 4px 0 0 4px;
   outline: none;
+  flex: 1;
+  font-size: 14px;
 }
 
 .search-bar button {
-  padding: 6px 12px;
+  padding: 10px 16px;
   background-color: #ffd700;
   border: none;
   border-radius: 0 4px 4px 0;
   cursor: pointer;
   font-weight: bold;
+  font-size: 14px;
+  white-space: nowrap;
 }
 
 .search-bar button:hover {
@@ -305,8 +327,9 @@ footer {
 }
 
 .container {
-  width: 400px;
-  margin: 40px auto;
+  width: 90%;
+  max-width: 400px;
+  margin: 20px auto;
   padding: 20px;
   background-color: #111;
   border-radius: 10px;
@@ -351,7 +374,151 @@ footer {
 }
 
 
-/* Reset some default styles */
+/* === Mobile Responsiveness === */
+@media (max-width: 768px) {
+  body {
+    padding: 10px;
+  }
+  
+  .navbar {
+    padding: 10px 15px;
+    flex-direction: column;
+    align-items: stretch;
+  }
+  
+  .logo {
+    text-align: center;
+    margin-bottom: 10px;
+  }
+  
+  .nav-links {
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 10px;
+  }
+  
+  .nav-links li a {
+    font-size: 0.85em;
+    padding: 5px 8px;
+  }
+  
+  .search-bar {
+    margin-top: 5px;
+  }
+  
+  .movie-list {
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 12px;
+    padding: 0 5px;
+  }
+  
+  .movie-card img {
+    height: 180px;
+  }
+  
+  .details h3 {
+    font-size: 1em;
+  }
+  
+  .details p {
+    font-size: 0.85em;
+  }
+  
+  .rating {
+    font-size: 0.8em;
+  }
+  
+  h1 {
+    font-size: 1.5em;
+  }
+  
+  h2 {
+    font-size: 1.2em;
+  }
+  
+  .movie-detail-container {
+    padding: 20px;
+    margin: 20px auto;
+  }
+  
+  .poster img {
+    width: 100%;
+    max-width: 250px;
+  }
+  
+  .movie-info h1 {
+    font-size: 1.8em;
+  }
+  
+  .movie-poster {
+    width: 100%;
+  }
+  
+  .movie-poster img {
+    width: 100%;
+    height: auto;
+    max-height: 350px;
+  }
+  
+  .container {
+    width: 95%;
+    margin: 15px auto;
+    padding: 15px;
+  }
+  
+  .book-btn {
+    padding: 14px 24px;
+    font-size: 14px;
+  }
+}
 
+@media (max-width: 480px) {
+  .movie-list {
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 10px;
+  }
+  
+  .movie-card img {
+    height: 160px;
+  }
+  
+  .nav-links {
+    gap: 8px;
+  }
+  
+  .nav-links li a {
+    font-size: 0.8em;
+  }
+  
+  .logo {
+    font-size: 1.1em;
+  }
+  
+  .search-bar input {
+    padding: 8px 10px;
+    font-size: 13px;
+  }
+  
+  .search-bar button {
+    padding: 8px 12px;
+    font-size: 13px;
+  }
+}
 
+/* === Touch-friendly improvements === */
+@media (hover: none) and (pointer: coarse) {
+  .movie-card {
+    transition: none;
+  }
+  
+  .book-btn, .search-bar button, .rate-btn {
+    min-height: 44px;
+    min-width: 44px;
+  }
+  
+  .nav-links li a {
+    padding: 10px 12px;
+  }
+}
 
+/* === Reset some default styles === */
