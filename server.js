@@ -93,6 +93,16 @@ app.get('/book', (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'book.html'));
 });
 
+// About page
+app.get('/about', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'about.html'));
+});
+
+// Contact page
+app.get('/contact', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'contact.html'));
+});
+
 
 // ======================================================
 // Booking Confirmation
