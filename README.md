@@ -4,13 +4,21 @@ A web-based application for booking movie tickets, built using **Express.js** an
 
 ---
 
+## 🚀 Live Deployment
+
+This application is deployed on Render: **[Movie Ticket Booking App](https://movie-ticket-booking-app.onrender.com/)**
+
+---
+
 ## 🚀 Features
 
 - 🎟️ Movie selection and booking functionality
 - 🧑‍💻 Session-based user authentication
-- 🕒 Booking history tracking with date and count (under development)
+- 🕒 Booking history tracking with date and count
 - 📦 Lightweight and clean interface with localStorage usage for quick movie detail handling
 - 🔐 Secure user login and personalized experience
+- 📱 Mobile-responsive design optimized for Android devices
+- ℹ️ About and Contact pages with developer information
 
 ---
 
@@ -27,14 +35,26 @@ A web-based application for booking movie tickets, built using **Express.js** an
 ## 📁 Folder Structure
 
 ```
-movie-booking-app/
+movie-ticket-booking-app/
 │
-├── public/          # Static HTML, CSS, JS
-├── routes/          # Express route handlers
-├── views/           # for EJS or templates
-├── app.js           # Main Express server file
+├── public/          # Static HTML, CSS, JS files
+│   ├── home.html    # Home page with movie listings
+│   ├── movie.html   # Movie details page
+│   ├── book.html    # Booking form
+│   ├── login.html   # User login page
+│   ├── register.html # User registration page
+│   ├── profile.html # User booking history
+│   ├── about.html   # About page
+│   ├── contact.html # Contact page
+│   ├── style.css    # Main stylesheet
+│   └── movie.js     # Movie detail handling
+├── server.js        # Main Express server file
 ├── package.json     # Project metadata and dependencies
-└── README.md
+├── .env             # Environment variables (not in git)
+├── .env.example     # Environment variables template
+├── render.yaml      # Render deployment configuration
+├── .gitignore       # Git ignore rules
+└── README.md        # Project documentation
 ```
 
 ---
@@ -43,8 +63,8 @@ movie-booking-app/
 
 1. **Clone the repository**  
    ```bash
-   git clone https://github.com/your-username/movie-booking-app.git
-   cd movie-booking-app
+   git clone https://github.com/Sombabu25/Movie-Ticket-Booking-App.git
+   cd Movie-Ticket-Booking-App-main
    ```
 
 2. **Install dependencies**  
@@ -52,24 +72,86 @@ movie-booking-app/
    npm install
    ```
 
-3. **Run the server**  
-   ```bash
-   node app.js
+3. **Set up environment variables**  
+   Create a `.env` file in the root directory:
+   ```env
+   MONGODB_URI=mongodb+srv://username:password@cluster.mongodb.net/moviebooking
+   SESSION_SECRET=your-secret-key-here
+   PORT=5000
    ```
 
-4. Open your browser at:  
+4. **Run the server**  
+   ```bash
+   npm start
    ```
-   http://localhost:3000
+   or
+   ```bash
+   node server.js
    ```
+
+5. Open your browser at:  
+   ```
+   http://localhost:5000
+   ```
+
+---
+
+## 🌐 Deployment on Render
+
+This application is deployed on Render using the following configuration:
+
+### Prerequisites
+- MongoDB Atlas account for database
+- Render account for hosting
+
+### Deployment Steps
+
+1. **Fork or clone this repository** to your GitHub account
+
+2. **Set up MongoDB Atlas**
+   - Create a free MongoDB Atlas cluster
+   - Create a database user
+   - Whitelist IP addresses (0.0.0.0/0 for Render)
+   - Get your connection string
+
+3. **Deploy on Render**
+   - Go to [Render Dashboard](https://dashboard.render.com/)
+   - Click "New +" → "Web Service"
+   - Connect your GitHub repository
+   - Render will automatically detect the `render.yaml` configuration
+   - Add environment variables:
+     - `MONGODB_URI`: Your MongoDB connection string
+     - `SESSION_SECRET`: A random secret string for session encryption
+   - Click "Deploy Web Service"
+
+4. **Access your app**
+   - Render will provide a URL like `https://your-app-name.onrender.com`
+   - The app will be live after deployment completes
+
+### Environment Variables Required
+- `MONGODB_URI`: MongoDB connection string
+- `SESSION_SECRET`: Secret key for session management
+- `PORT`: Port number (Render sets this automatically)
 
 ---
 
 ## 📌 To-Do / Upcoming Features
 
-- [ ] Complete booking history storage in backend
 - [ ] Add movie seat selection UI
 - [ ] Email confirmation for bookings
-- [ ] Deployment to Render or Vercel
+- [ ] Payment gateway integration
+- [ ] Movie reviews and ratings system
+- [ ] Advanced search and filtering options
+
+---
+
+## 👨‍💻 Developer
+
+**Sombabu Patel**
+
+- 📧 Email: sombabu25@outlook.com
+- 📱 Phone: +91 8210787484
+- 💼 LinkedIn: [linkedin.com/in/sombabu-patel](https://www.linkedin.com/in/sombabu-patel/)
 
 ---
 
