@@ -27,5 +27,13 @@
     </form>
     <p>Don't have an account? <a href="/register">Register here</a></p>
   </div>
+  
+  <script>
+    // Set login status on successful login
+    document.querySelector('form').addEventListener('submit', function(e) {
+      // This will be set after successful login via server redirect
+      // The actual setting will happen on the redirected page
+    });
+  </script>
 </body>
 </html>

@@ -90,6 +90,9 @@ app.get('/movie', (req, res) => {
 
 // Booking page
 app.get('/book', (req, res) => {
+  if (!req.session.userId) {
+    return res.redirect('/login');
+  }
   res.sendFile(path.join(__dirname, 'public', 'book.html'));
 });
 
@@ -319,7 +322,7 @@ app.post('/login', async (req, res) => {
     // Store user ID in session
     req.session.userId = user._id;
 
-    res.redirect('/profile');
+    res.redirect('/');
 
   } catch (err) {
 
@@ -350,7 +353,7 @@ app.get('/logout', (req, res) => {
       );
     }
 
-    res.redirect('/login');
+    res.redirect('/');
   });
 });
 

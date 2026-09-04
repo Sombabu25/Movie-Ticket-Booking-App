@@ -17,8 +17,10 @@
       <li><a href="/">Home</a></li>
       <li><a href="/about">About</a></li>
       <li><a href="/contact">Contact</a></li>
-      <li><a href="/login">Login</a></li>
-      <li><a href="/register">Signup</a></li>
+      <li class="auth-links"><a href="/login">Login</a></li>
+      <li class="auth-links"><a href="/register">Signup</a></li>
+      <li class="user-links" style="display: none;"><a href="/profile">Profile</a></li>
+      <li class="user-links" style="display: none;"><a href="/logout" onclick="clearLocalStorage()">Logout</a></li>
     </ul>
     <form class="search-bar">
       <input type="text" id="searchInput" placeholder="Search movies...">
@@ -359,6 +361,40 @@ const movieData = {
     
   
     searchInput.addEventListener("input", filterMovies);
+  </script>
+  
+  <script>
+    // Clear localStorage on logout
+    function clearLocalStorage() {
+      localStorage.removeItem('isLoggedIn');
+      localStorage.removeItem('selectedMovie');
+      localStorage.removeItem('bookMovieTitle');
+    }
+    
+    // Check authentication status on page load
+    window.addEventListener('DOMContentLoaded', function() {
+      // Make an API call to check if user is authenticated
+      fetch('/api/bookings')
+        .then(response => {
+          if (response.status === 200) {
+            localStorage.setItem('isLoggedIn', 'true');
+            // Show user links, hide auth links
+            document.querySelectorAll('.auth-links').forEach(el => el.style.display = 'none');
+            document.querySelectorAll('.user-links').forEach(el => el.style.display = 'block');
+          } else {
+            localStorage.setItem('isLoggedIn', 'false');
+            // Show auth links, hide user links
+            document.querySelectorAll('.auth-links').forEach(el => el.style.display = 'block');
+            document.querySelectorAll('.user-links').forEach(el => el.style.display = 'none');
+          }
+        })
+        .catch(() => {
+          localStorage.setItem('isLoggedIn', 'false');
+          // Show auth links, hide user links
+          document.querySelectorAll('.auth-links').forEach(el => el.style.display = 'block');
+          document.querySelectorAll('.user-links').forEach(el => el.style.display = 'none');
+        });
+    });
   </script>
   
 

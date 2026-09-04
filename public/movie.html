@@ -51,7 +51,7 @@
       </div>
       <p><strong>Price:</strong> <span id="movie-price">-</span></p>
 
-      <a href="/book" onclick="saveMovieName()">
+      <a href="#" onclick="checkAuthAndBook()">
         <button class="book-btn">Book tickets</button>
       </a>
     </div>
@@ -60,11 +60,26 @@
   <!-- Footer -->
   <footer>© 2025 MovieBook</footer>
 
-  <!-- Script for saveMovieName function -->
+  <!-- Script for authentication check and booking -->
   <script>
     function saveMovieName() {
       const title = document.getElementById("movieTitle").textContent;
       localStorage.setItem("bookMovieTitle", title);
+    }
+
+    function checkAuthAndBook() {
+      // Check if user is logged in
+      const isLoggedIn = localStorage.getItem("isLoggedIn") === "true";
+      
+      if (isLoggedIn) {
+        // User is logged in, proceed to booking
+        saveMovieName();
+        window.location.href = "/book";
+      } else {
+        // User is not logged in, redirect to login
+        alert("Please login or signup to book tickets");
+        window.location.href = "/login";
+      }
     }
   </script>
 
