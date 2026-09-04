@@ -6,7 +6,7 @@ A web-based application for booking movie tickets, built using **Express.js** an
 
 ## 🚀 Live Deployment
 
-This application is deployed on Render: **[Movie Ticket Booking App](https://movie-ticket-booking-app.onrender.com/)**
+This application is deployed on Render: **[Movie Ticket Booking App](https://movie-ticket-booking-app-u3cf.onrender.com/)**
 
 ---
 
